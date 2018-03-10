@@ -47,3 +47,4 @@ Route::get('/urun/{urunadi}/{id}',function ($urunadi, $id){
 
 
 Route::get('/' , 'anasayfaController@index');
+
