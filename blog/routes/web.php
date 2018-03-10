@@ -48,3 +48,8 @@ Route::get('/urun/{urunadi}/{id}',function ($urunadi, $id){
 
 Route::get('/' , 'anasayfaController@index');
 
+#Şablon Yapısı Rotaları
+
+Route::view('/kategori' , 'kategori');
+Route::view('/urun' , 'urun');
+Route::view('/sepet', 'sepet');
