@@ -11,9 +11,13 @@
 |
 */
 
+/*
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+*/
 
 #Bu komut ile tarayıcıya / dan sonra merhaba yazdığımızda istediğimiz metni yazdırabiliyoruz.
 
@@ -36,3 +40,10 @@ Route::get('/urun/{urunadi}/{id}',function ($urunadi, $id){
 
     return "Ürün Adı: $id $urunadi";
 });
+
+#######Controller
+
+#Route ile controller kullanımı
+
+
+Route::get('/' , 'anasayfaController@index');
