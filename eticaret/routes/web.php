@@ -19,3 +19,4 @@ Route::get('/kategori/{slug_kategoriadi}' , 'kategoriController@index')->name('k
 Route::get('/urun/{slug_urunadi}' , 'urunController@index')->name('urun');
 Route::get('/sepet' , 'sepetController@index')->name('sepet');
 Route::get('/odeme' , 'odemeController@index')->name('odeme');
+Route::get('/siparisler' , 'siparisController@index')->name('siparisler');
