@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Laravel Eticaret</title>
+    <title>@yield('title')</title>
 
     @include('layouts.partials.head')
     @yield('head')
