@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::get('/kategori/{slug_kategoriadi}' , 'kategoriController@index')->name('kategori');
 Route::get('/urun/{slug_urunadi}' , 'urunController@index')->name('urun');
+Route::get('/sepet' , 'sepetController@index')->name('sepet');
