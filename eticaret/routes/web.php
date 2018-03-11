@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('anasayfa');
 });
+
+Route::get('/kategori/{slug_kategoriadi}' , 'kategoriController@index')->name('kategori');
