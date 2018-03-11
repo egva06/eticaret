@@ -20,3 +20,4 @@ Route::get('/urun/{slug_urunadi}' , 'urunController@index')->name('urun');
 Route::get('/sepet' , 'sepetController@index')->name('sepet');
 Route::get('/odeme' , 'odemeController@index')->name('odeme');
 Route::get('/siparisler' , 'siparisController@index')->name('siparisler');
+Route::get('/siparisler/{id}' , 'siparisController@detay')->name('siparis');
