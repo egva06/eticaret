@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('anasayfa');
-});
+Route::get('/' , 'anasayfaController@index');
 
 Route::get('/kategori/{slug_kategoriadi}' , 'kategoriController@index')->name('kategori');
 Route::get('/urun/{slug_urunadi}' , 'urunController@index')->name('urun');
