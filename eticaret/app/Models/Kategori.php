@@ -11,4 +11,15 @@ class Kategori extends Model
     // protected $fillable = ['kategori_adi' , 'slug']; #Bunu ekleme sebebimiz tinker da create ile ekleme yapabilmek için.
 
     protected $guarded = []; #bunu eklediğimizde ise tüm alanlara ekleme izni vermiş oluyoruz.
+
+    public function urunler() {
+
+        return $this->belongsToMany('App\Models\urun' , 'kategori_urun');
+
+        #bu kod ile burada kategorinin içerisine ürünleri tanımlayarak doğrudan çekim işlemi yapabilcez.
+        #yani burada bir kategori içerisindeki ürünleri çekebilmemizi sağlıyor.
+
+    }
+
+
 }
