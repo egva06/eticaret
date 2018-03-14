@@ -11,6 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+         $this->call(kategoriTableSeeder::class); #bu kod kategori seeeder dosyamızın çalışması için.
     }
 }
