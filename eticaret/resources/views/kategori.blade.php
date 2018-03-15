@@ -67,6 +67,8 @@
 
 
                     </div>
+                    {{$urunler->links()}}
+
                 </div>
             </div>
         </div>

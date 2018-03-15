@@ -18,6 +18,8 @@ Route::get('/urun/{slug_urunadi}' , 'urunController@index')->name('urun');
 
 Route::post('/ara' , 'urunController@ara')->name('urun_ara');
 
+Route::get('/ara' , 'urunController@ara')->name('urun_ara'); #bu get değerini sayfalamada bir sonraki sayfaya tıkladığımızda gidebilsin diye yazıyoruz.
+
 Route::get('/sepet' , 'sepetController@index')->name('sepet');
 Route::get('/odeme' , 'odemeController@index')->name('odeme');
 Route::get('/siparisler' , 'siparisController@index')->name('siparisler');

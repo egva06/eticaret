@@ -12,7 +12,7 @@ class kategoriController extends Controller
         $kategori = Kategori::where('slug' , $slug_kategoriadi)->firstOrFail();
         $alt_kategoriler = Kategori::where('ust_id'  , $kategori->id)->get();
 
-        $urunler = $kategori->urunler;
+        $urunler = $kategori->urunler()->paginate(2);
 
         return view('kategori' , compact('kategori' , 'alt_kategoriler' , 'urunler'));
 

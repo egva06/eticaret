@@ -35,6 +35,8 @@
 
             </div>
 
+            {{ $urunler->appends(['aranan' => old('aranan')])->links() }} <!-- Sayfalama İşlemi !-->
+
         </div>
 
     </div>

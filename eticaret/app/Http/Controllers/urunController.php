@@ -20,7 +20,7 @@ class urunController extends Controller
         $aranan= request()->input('aranan');
         $urunler= Urun::where('urun_adi' , 'like' , "%$aranan%")
             ->orWhere('aciklama' , 'like' , "%$aranan%")
-            ->get();
+            ->paginate(4); #sayfalandırma fonksiyonu
 
         request()->flash(); #bu arama yaptığımızda o yazının orda kalmasını sağlıyor.
 
