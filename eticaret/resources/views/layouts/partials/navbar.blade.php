@@ -13,9 +13,9 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left" action="{{ Route('urun_ara') }}" methot="post">
+            <form class="navbar-form navbar-left" method="post" action="{{ Route('urun_ara') }}" >
 
-                {{csrf_field()}}
+                {{ csrf_field() }}
 
                 <div class="input-group">
                     <input type="text" id="navbar-search" class="form-control" name="aranan" placeholder="Ara" value="{{ old('aranan') }}">
