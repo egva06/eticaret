@@ -14,4 +14,20 @@ class urunController extends Controller
 
         return view('urun' , compact('urun'));
     }
+
+    public function ara() {
+
+        $aranan= request()->input('aranan');
+        $urunler= Urun::where('urun_adi' , 'like' , "%$aranan%")
+            ->orWhere('aciklama' , 'like' , "%$aranan%")
+            ->get();
+
+        request()->flash(); #bu arama yaptığımızda o yazının orda kalmasını sağlıyor.
+
+        return view('arama' , compact('urunler'));
+
+
+    }
+
+
 }
