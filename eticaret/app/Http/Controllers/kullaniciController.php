@@ -21,6 +21,15 @@ class kullaniciController extends Controller
 
     public function kaydol() {
 
+        $this->validate(request(), [
+
+            'adsoyad' => 'required | min:5 | max:60',
+            'email'   => 'required | email | unique:kullanici',
+            'sifre'   => 'required | confirmed| min:5 | max:15'
+        ]);
+
+
+
         $kullanici= Kullanici::create([
 
             'adsoyad'               => request('adsoyad'),
