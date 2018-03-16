@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Kullanici;
+use App\Mail\KullaniciKayitMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+
 
 class kullaniciController extends Controller
 {
@@ -38,6 +41,11 @@ class kullaniciController extends Controller
             'aktivasyon_anahtari'   => Str::random(60),
             'aktif_mi'              => 0
              ]);
+
+            Mail::to(request('email'))->send(new KullaniciKayitMail($kullanici));
+            #Önemli Not: Şimdi mail için env dosyasını falan editlemiştik ya
+            #bu edit işleminden sonra tarayıcından hata alırsan
+            #php artisan config:clear ve config:cache  diyerek bu sorunu çözebilirsin
 
             auth()->login($kullanici); #Kayıt oluştuğunda otomatik giriş için
 
