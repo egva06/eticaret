@@ -30,4 +30,6 @@ Route::group(['prefix'=> 'kullanici'], function (){
     Route::get('/oturumac' , 'kullaniciController@giris_form')->name('kullanici.oturumac');
     Route::get('/kaydol' , 'kullaniciController@kaydol_form')->name('kullanici.kaydol');
 
+    Route::post('/kaydol' , 'kullaniciController@kaydol');
+
 });
