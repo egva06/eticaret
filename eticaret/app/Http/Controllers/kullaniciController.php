@@ -53,4 +53,30 @@ class kullaniciController extends Controller
 
     }
 
+    public function aktiflestir($anahtar) {
+
+        $kullanici=Kullanici::where('aktivasyon_anahtari' , $anahtar)->first();
+        if (!is_null($kullanici)) {
+
+            $kullanici->aktivasyon_anahtari = null;
+            $kullanici->aktif_mi = 1;
+            $kullanici->save();
+            return redirect()->to('/')
+                ->with('mesaj' , 'Kullanıcı Kaydınız Aktifleştirildi')
+                ->with('mesaj_tur' , 'success');
+
+
+        } else {
+
+            return redirect()->to('/')
+                ->with('mesaj' , 'Kullanıcı Kaydınız Aktifleştirilemedi!')
+                ->with('mesaj_tur' , 'danger');
+
+        }
+
+
+    }
+
+
+
 }

@@ -29,7 +29,7 @@ Route::group(['prefix'=> 'kullanici'], function (){
 
     Route::get('/oturumac' , 'kullaniciController@giris_form')->name('kullanici.oturumac');
     Route::get('/kaydol' , 'kullaniciController@kaydol_form')->name('kullanici.kaydol');
-
+    Route::get('/aktiflestir/{anahtar}' , 'kullaniciController@aktiflestir')->name('aktiflestir');
     Route::post('/kaydol' , 'kullaniciController@kaydol');
 
 });
