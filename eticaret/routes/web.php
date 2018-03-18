@@ -28,8 +28,10 @@ Route::get('/siparisler/{id}' , 'siparisController@detay')->name('siparis');
 Route::group(['prefix'=> 'kullanici'], function (){
 
     Route::get('/oturumac' , 'kullaniciController@giris_form')->name('kullanici.oturumac');
+    Route::post('/oturumac' , 'kullaniciController@giris');
     Route::get('/kaydol' , 'kullaniciController@kaydol_form')->name('kullanici.kaydol');
     Route::get('/aktiflestir/{anahtar}' , 'kullaniciController@aktiflestir')->name('aktiflestir');
     Route::post('/kaydol' , 'kullaniciController@kaydol');
+    Route::post('/oturumukapat' , 'kullaniciController@oturumukapat')->name('kullanici.oturumukapat');
 
 });

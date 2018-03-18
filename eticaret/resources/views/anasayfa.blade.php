@@ -2,12 +2,7 @@
 @section('title' , 'Anasayfa')
 
 @section('content')
-@if(session()->has('mesaj'))
-    <div class="container">
-        <div class="alert alert-{{ session('mesaj_tur') }}">{{ session('mesaj') }}</div>
-    </div>
-
-@endif
+@include('layouts.partials.errors')
 <div class="container">
     <div class="row">
         <div class="col-md-3">

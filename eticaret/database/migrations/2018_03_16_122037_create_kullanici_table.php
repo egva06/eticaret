@@ -20,6 +20,8 @@ class CreateKullaniciTable extends Migration
             $table->string('sifre' , 60);
             $table->string('aktivasyon_anahtari' , 60)->nullable();
             $table->boolean('aktif_mi')->default(0);
+            $table->rememberToken(); # Bunu koymamızdaki amaç beni hatırla olayı.
+
 
             $table->timestamps();
         });

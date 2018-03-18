@@ -17,6 +17,32 @@ class kullaniciController extends Controller
         return view('kullanici.oturumac');
     }
 
+    public function giris() {
+
+        $this->validate(request(), [
+
+            'email' => 'required | email',
+            'sifre' => 'required'
+         ]);
+        if (auth()->attempt(['email' => request('email'), 'password' => request('sifre')],
+         request()->has('benihatirla'))) {
+
+            request()->session()->regenerate();
+            return redirect()->intended('/');
+
+        } else {
+
+            $errors = ['email' => 'Hatali Giris'];
+            return back()->withErrors($errors);
+
+
+        }
+
+
+
+    }
+
+
     public function kaydol_form() {
 
         return view('kullanici.kaydol');
@@ -73,6 +99,17 @@ class kullaniciController extends Controller
                 ->with('mesaj_tur' , 'danger');
 
         }
+
+
+    }
+
+    public function oturumukapat() {
+
+        auth()->logout();
+        request()->session()->flush();
+        request()->session()->regenerate();
+        return redirect()->route('anasayfa');
+
 
 
     }
