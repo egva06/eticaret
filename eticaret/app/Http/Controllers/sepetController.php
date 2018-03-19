@@ -31,4 +31,12 @@ class sepetController extends Controller
 
     }
 
+    public function bosalt() {
+
+        Cart::destroy();
+        return redirect()->route('sepet');
+
+    }
+
+
 }
