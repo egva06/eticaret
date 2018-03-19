@@ -29,12 +29,12 @@ Route::group(['prefix' => 'sepet' ] , function (){
 
 });
 
-
-
+Route::get('/odeme' , 'odemeController@index')->name('odeme');
+Route::post('/odeme' , 'odemeController@odemeyap')->name('odeme.yap');
 
 Route::group(['middleware' => 'auth'], function (){
 
-    Route::get('/odeme' , 'odemeController@index')->name('odeme');
+
     Route::get('/siparisler' , 'siparisController@index')->name('siparisler');
     Route::get('/siparisler/{id}' , 'siparisController@detay')->name('siparis');
 
