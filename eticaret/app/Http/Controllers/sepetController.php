@@ -64,6 +64,13 @@ class sepetController extends Controller
     }
 
     public function bosalt() {
+        if (auth()->check()) {
+
+            $aktif_sepet_id=session('aktif_sepet_id');
+
+            SepetUrun::where('sepet_id' , $aktif_sepet_id)->delete();
+
+        }
 
         Cart::destroy();
         return redirect()->route('sepet');
