@@ -20,7 +20,15 @@ Route::post('/ara' , 'urunController@ara')->name('urun_ara');
 
 Route::get('/ara' , 'urunController@ara')->name('urun_ara'); #bu get değerini sayfalamada bir sonraki sayfaya tıkladığımızda gidebilsin diye yazıyoruz.
 
-Route::get('/sepet' , 'sepetController@index')->name('sepet');
+Route::group(['prefix' => 'sepet' ] , function (){
+    Route::get('/' , 'sepetController@index')->name('sepet');
+    Route::post('/ekle' , 'sepetController@ekle')->name('sepet.ekle');
+
+
+});
+
+
+
 
 Route::group(['middleware' => 'auth'], function (){
 
