@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sepet;
+use App\Models\SepetUrun;
 use App\Models\Urun;
 use Cart;
 use Illuminate\Http\Request;
@@ -17,7 +19,26 @@ class sepetController extends Controller
     public function ekle() {
 
         $urun = Urun::find(request('id'));
-        Cart::add($urun->id , $urun->urun_adi , 1 , $urun->fiyati, ['slug' => $urun->slug] );
+        $cartItem=Cart::add($urun->id , $urun->urun_adi , 1 , $urun->fiyati, ['slug' => $urun->slug] );
+
+
+        if (auth()->check()) {
+
+            $aktif_sepet_id=session('aktif_sepet_id');
+            if (!isset($aktif_sepet_id)) {
+                $aktif_sepet= Sepet::create([
+                    'kullanici_id' => auth()->id()
+                ]);
+                $aktif_sepet_id=$aktif_sepet->id;
+                session()->put('aktif_sepet_id' , $aktif_sepet_id);
+           }
+
+           SepetUrun::updateOrCreate(
+             ['sepet_id' => $aktif_sepet_id, 'urun_id' => $urun->id],
+             ['adet' => $cartItem->qty, 'fiyati' => $urun->fiyati, 'durum' => 'Beklemede']
+           );
+
+        }
 
         return redirect()->route('sepet')
             ->with('mesaj_tur' , 'success')
