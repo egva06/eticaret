@@ -48,6 +48,16 @@ class sepetController extends Controller
 
     public function kaldir($rowid) {
 
+        if (auth()->check()) {
+
+            $aktif_sepet_id=session('aktif_sepet_id');
+            $cartItem=Cart::get($rowid);
+            SepetUrun::where('sepet_id' , $aktif_sepet_id)->where('urun_id' , $cartItem->id)->delete();
+
+        }
+
+
+
         Cart::remove($rowid);
         return redirect()->route('sepet');
 
