@@ -9,4 +9,11 @@ class Sepet extends Model
     protected $table= 'sepet';
 
     protected $guarded = [];
+
+    public function siparis() {
+
+       return $this->hasOne('App\Models\Siparis');
+
+    }
+
 }
