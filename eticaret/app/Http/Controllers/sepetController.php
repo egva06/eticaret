@@ -91,7 +91,17 @@ class sepetController extends Controller
 
         }
 
+        if (auth()->check()) {
 
+            $aktif_sepet_id=session('aktif_sepet_id');
+            $cartItem=Cart::get($rowid);
+            if (request('adet')==0) {
+                SepetUrun::where('sepet_id', $aktif_sepet_id)->where('urun_id', $cartItem->id)->delete();
+            } else {
+                SepetUrun::where('sepet_id', $aktif_sepet_id)->where('urun_id', $cartItem->id)->
+                update(['adet' => request('adet')]);
+            }
+        }
 
         Cart::update($rowid , request('adet'));
 
