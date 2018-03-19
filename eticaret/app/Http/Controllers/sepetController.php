@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Urun;
 use Cart;
 use Illuminate\Http\Request;
+use Validator;
 
 class sepetController extends Controller
 {
@@ -35,6 +36,30 @@ class sepetController extends Controller
 
         Cart::destroy();
         return redirect()->route('sepet');
+
+    }
+
+    public function guncelle($rowid) {
+
+        $validator= Validator::make(request()->all(), [
+            'adet' => 'required | numeric | between:1,5'
+        ] );
+
+        if ($validator->fails()) {
+
+            session()->flash('mesaj_tur' , 'danger');
+            session()->flash('mesaj' , 'Adet Değeri 1 ile 5 Arasında Olmalı!');
+            return response()->json(['success' => false]);
+
+        }
+
+
+
+        Cart::update($rowid , request('adet'));
+
+        session()->flash('mesaj_tur' , 'success');
+        session()->flash('mesaj' , 'Adet bilgisi güncellendi');
+        return response()->json(['success' => true]);
 
     }
 
