@@ -23,7 +23,7 @@ Route::get('/ara' , 'urunController@ara')->name('urun_ara'); #bu get değerini s
 Route::group(['prefix' => 'sepet' ] , function (){
     Route::get('/' , 'sepetController@index')->name('sepet');
     Route::post('/ekle' , 'sepetController@ekle')->name('sepet.ekle');
-
+    Route::delete('/kaldir/{rowid}' , 'sepetController@kaldir')->name('sepet.kaldir');
 
 });
 

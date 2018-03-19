@@ -31,6 +31,14 @@
                         <a href="{{ route('urun' , $urunCartItem->options->slug) }}">
                             {{ $urunCartItem->name }}
                         </a>
+                        <form action="{{ route('sepet.kaldir' , $urunCartItem->rowId) }}" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <input type="submit" class="btn btn-danger btn-xs" value="Sepetten Kaldır">
+
+                        </form>
+                        
+                        
                     </td>
                     <td>{{$urunCartItem->price}} ₺</td>
                     <td>

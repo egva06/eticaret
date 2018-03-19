@@ -23,4 +23,12 @@ class sepetController extends Controller
             ->with('mesaj' , 'Ürün Sepete Eklendi');
 
     }
+
+    public function kaldir($rowid) {
+
+        Cart::remove($rowid);
+        return redirect()->route('sepet');
+
+    }
+
 }
