@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Kullanici;
 use App\Mail\KullaniciKayitMail;
+use App\Models\KullaniciDetay;
 use App\Models\Sepet;
 use App\Models\SepetUrun;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -102,6 +103,8 @@ class kullaniciController extends Controller
             'aktivasyon_anahtari'   => Str::random(60),
             'aktif_mi'              => 0
              ]);
+
+            $kullanici->detay()->save(new KullaniciDetay());
 
             Mail::to(request('email'))->send(new KullaniciKayitMail($kullanici));
             #Önemli Not: Şimdi mail için env dosyasını falan editlemiştik ya
