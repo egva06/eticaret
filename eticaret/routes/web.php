@@ -21,9 +21,16 @@ Route::post('/ara' , 'urunController@ara')->name('urun_ara');
 Route::get('/ara' , 'urunController@ara')->name('urun_ara'); #bu get değerini sayfalamada bir sonraki sayfaya tıkladığımızda gidebilsin diye yazıyoruz.
 
 Route::get('/sepet' , 'sepetController@index')->name('sepet');
-Route::get('/odeme' , 'odemeController@index')->name('odeme');
-Route::get('/siparisler' , 'siparisController@index')->name('siparisler');
-Route::get('/siparisler/{id}' , 'siparisController@detay')->name('siparis');
+
+Route::group(['middleware' => 'auth'], function (){
+
+    Route::get('/odeme' , 'odemeController@index')->name('odeme');
+    Route::get('/siparisler' , 'siparisController@index')->name('siparisler');
+    Route::get('/siparisler/{id}' , 'siparisController@detay')->name('siparis');
+
+});
+
+
 
 Route::group(['prefix'=> 'kullanici'], function (){
 

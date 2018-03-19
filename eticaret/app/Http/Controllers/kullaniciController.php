@@ -12,6 +12,14 @@ use Illuminate\Support\Str;
 
 class kullaniciController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('oturumukapat');
+        #Bu kodumuzu yazdığımızda sadece kullanıcı girişi yapmamış kişilerin aşağıdaki
+        #alanlara girebilmesini sağlıyoruz. except ile de oturumukapat ' sadece ulaşabiliyorlar.
+
+    }
+
     public function giris_form() {
 
         return view('kullanici.oturumac');
