@@ -15,6 +15,7 @@ class siparisController extends Controller
 
     public function detay($id) {
 
-        return view('siparis');
+        $siparis=Siparis::with('sepet.sepet_urunler.urun')->where('siparis.id' , $id)->firstOrFail();
+        return view('siparis' , compact('siparis'));
     }
 }
