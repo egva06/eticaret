@@ -52,3 +52,10 @@ Route::group(['prefix'=> 'kullanici'], function (){
     Route::post('/oturumukapat' , 'kullaniciController@oturumukapat')->name('kullanici.oturumukapat');
 
 });
+
+Route::group(['prefix' => 'yonetim' , 'namespace' => 'Yonetim'], function (){
+
+    Route::get('/oturumac' , 'kullaniciController@oturumac')->name('yonetim.oturumac');
+
+
+});
