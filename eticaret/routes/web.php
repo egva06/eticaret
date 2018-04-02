@@ -56,6 +56,12 @@ Route::group(['prefix'=> 'kullanici'], function (){
 Route::group(['prefix' => 'yonetim' , 'namespace' => 'Yonetim'], function (){
     Route::redirect('/' , 'yonetim/oturumac');
     Route::match(['get' , 'post'],'/oturumac' , 'kullaniciController@oturumac')->name('yonetim.oturumac');
-    Route::get('/anasayfa' , 'anasayfaController@index')->name('yonetim.anasayfa');
+
+    Route::get('/oturumukapat' , 'kullaniciController@oturumukapat')->name('yonetim.oturumukapat');
+
+    Route::group(['middleware' => 'yonetim' ], function (){
+        Route::get('/anasayfa' , 'anasayfaController@index')->name('yonetim.anasayfa');
+
+    });
 
 });
