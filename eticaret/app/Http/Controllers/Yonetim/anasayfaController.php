@@ -10,6 +10,5 @@ class anasayfaController extends Controller
     public function index() {
 
         return view('yonetim.anasayfa');
-
     }
 }
