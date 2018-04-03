@@ -9,6 +9,9 @@
         </div>
         Kullanıcı Listesi
     </h1>
+
+    @include('layouts.partials.errors')
+
     <div class="table-responsive">
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
@@ -48,7 +51,7 @@
                     <a href="{{ route('yonetim.kullanici.duzenle' , $entry->id) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
                         <span class="fa fa-pencil"></span>
                     </a>
-                    <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin misiniz?')">
+                    <a href="{{ route('yonetim.kullanici.sil' , $entry->id) }}" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin misiniz?')">
                         <span class="fa fa-trash"></span>
                     </a>
                 </td>

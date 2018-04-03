@@ -107,4 +107,15 @@ class kullaniciController extends Controller
             ->with('mesaj_tur' , 'success');
     }
 
+    public function sil($id) {
+
+        Kullanici::destroy($id);
+
+        return redirect()
+            ->route('yonetim.kullanici')
+            ->with('mesaj' , 'Kullanıcı Silindi')
+            ->with('mesaj_tur' , 'success');
+
+    }
+
 }
