@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Kullanici extends Authenticatable
 {
     protected $fillable = [
-        'adsoyad', 'email', 'sifre', 'aktivasyon_anahtari','aktif_mi'
+        'adsoyad', 'email', 'sifre', 'aktivasyon_anahtari','aktif_mi','yonetici_mi'
     ];
 
     protected $table = 'kullanici';
