@@ -77,8 +77,8 @@ class kullaniciController extends Controller
 
             $data['sifre'] = Hash::make(request('sifre'));
         }
-        $data['aktif_mi']=request()->has('aktif_mi') ? 1:0;
-        $data['yonetici_mi']=request()->has('yonetici_mi') ? 1 : 0;
+        $data['aktif_mi']=request()->has('aktif_mi')&& request('aktif_mi')==1 ? 1:0;
+        $data['yonetici_mi']=request()->has('yonetici_mi') && request('yonetici_mi')==1 ? 1 : 0;
 
 
         if ($id>0) {

@@ -66,7 +66,7 @@ Route::group(['prefix' => 'yonetim' , 'namespace' => 'Yonetim'], function (){
            Route::match(['get' , 'post'] , '/' , 'kullaniciController@index')->name('yonetim.kullanici');
            Route::get('/yeni' , 'kullaniciController@form')->name('yonetim.kullanici.yeni');
            Route::get('/duzenle/{id}' , 'kullaniciController@form')->name('yonetim.kullanici.duzenle');
-           Route::post('/kaydet/{id}' , 'kullaniciController@kaydet')->name('yonetim.kullanici.kaydet');
+           Route::post('/kaydet/{id?}' , 'kullaniciController@kaydet')->name('yonetim.kullanici.kaydet');
            Route::get('/sil/{id}' , 'kullaniciController@sil')->name('yonetim.kullanici.sil');
 
         });

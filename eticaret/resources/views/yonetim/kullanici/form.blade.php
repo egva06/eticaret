@@ -36,7 +36,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="sifre">Şifre</label>
-                <input type="password" class="form-control" id="sifre"  placeholder="Şifre">
+                <input type="password" class="form-control" id="sifre" name="sifre"  placeholder="Şifre">
             </div>
         </div>
 
@@ -68,12 +68,16 @@
     </div>
     <div class="checkbox">
         <label>
+            {{-- Hidden input kullanma sebebimiz old ile eski girilen değeri alabilmek için checkboxdan--}}
+
+            <input type="hidden" name="aktif_mi" value="0">
             <input type="checkbox" name="aktif_mi" value="1" {{old('aktif_mi' ,$entry->aktif_mi) ? 'checked' : '' }}> Aktif Mi
         </label>
     </div>
 
     <div class="checkbox">
         <label>
+            <input type="hidden" name="yonetici_mi" value="0">
             <input type="checkbox" name="yonetici_mi" value="1" {{old('yonetici_mi', $entry->yonetici_mi) ? 'checked' : '' }} > Yönetici Mi
         </label>
     </div>
