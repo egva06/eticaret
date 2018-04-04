@@ -2,13 +2,28 @@
 @section('title' , 'Kullanici')
 @section('content')
 
-    <h1 class="sub-header">
+    <h1 class="sub-header">Kullanıcı Listesi</h1>
+
+    <div class="well">
         <div class="btn-group pull-right">
 
             <a href="{{ route('yonetim.kullanici.yeni') }}" class="btn btn-primary">Yeni</a>
         </div>
-        Kullanıcı Listesi
-    </h1>
+        <form action="{{ route('yonetim.kullanici') }}" method="post" class="form-inline">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <label for="aranan">Ara</label>
+                <input type="text" class="form-control form-control-sm" name="aranan" id="aranan" placeholder="Ad,Email Ara..." value="{{ old('aranan') }}">
+
+            </div>
+            <button type="submit" class="btn btn-primary">Ara</button>
+            <a href="{{ route('yonetim.kullanici') }}" class="btn btn-primary">Temizle</a>
+        </form>
+
+    </div>
+
+
+
 
     @include('layouts.partials.errors')
 

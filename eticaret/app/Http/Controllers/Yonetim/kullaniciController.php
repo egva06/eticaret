@@ -50,7 +50,21 @@ class kullaniciController extends Controller
 
     public function index() {
 
-        $list = Kullanici::orderByDesc('created_at')->paginate(8);
+        if (request()->filled('aranan')) {
+
+            request()->flash(); // Bu Komut Arama yaptığımızda en son ne aradıysak inputta kalmasını sağlar
+            $aranan = request('aranan');
+            $list= Kullanici::where('adsoyad' , 'like' , "%$aranan%")
+                ->orWhere('email' , 'like' , "%$aranan%")
+                ->orderByDesc('created_at')
+                ->paginate(8);
+
+        } else {
+
+            $list = Kullanici::orderByDesc('created_at')->paginate(8);
+        }
+
+
         return view('yonetim.kullanici.index' , compact('list'));
 
     }
