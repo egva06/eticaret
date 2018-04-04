@@ -80,6 +80,15 @@ Route::group(['prefix' => 'yonetim' , 'namespace' => 'Yonetim'], function (){
 
         });
 
+        Route::group(['prefix' => 'urun'] , function (){
+            Route::match(['get' , 'post'] , '/' , 'urunController@index')->name('yonetim.urun');
+            Route::get('/yeni' , 'urunController@form')->name('yonetim.urun.yeni');
+            Route::get('/duzenle/{id}' , 'urunController@form')->name('yonetim.urun.duzenle');
+            Route::post('/kaydet/{id?}' , 'urunController@kaydet')->name('yonetim.urun.kaydet');
+            Route::get('/sil/{id}' , 'urunController@sil')->name('yonetim.urun.sil');
+
+        });
+
 
     });
 
