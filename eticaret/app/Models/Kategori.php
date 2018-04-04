@@ -21,5 +21,14 @@ class Kategori extends Model
 
     }
 
+    public function ust_kategori() {
+
+        return $this->belongsTo('App\Models\Kategori' , 'ust_id')->withDefault([
+            'kategori_adi' => 'Ana Kategori'
+
+        ]);
+    }
+
+
 
 }

@@ -13,14 +13,14 @@ class kategoriController extends Controller
 
             request()->flash(); // Bu Komut Arama yaptığımızda en son ne aradıysak inputta kalmasını sağlar
             $aranan = request('aranan');
-            $list= Kategori::where('kategori_adi' , 'like' , "%$aranan%")
-                ->orderByDesc('created_at')
+            $list= Kategori::with('ust_kategori')->where('kategori_adi' , 'like' , "%$aranan%")
+                ->orderByDesc('id')
                 ->paginate(8)
                 ->appends('aranan' , $aranan);
 
         } else {
 
-            $list = Kategori::orderByDesc('created_at')->paginate(8);
+            $list = Kategori::with('ust_kategori')->orderByDesc('id')->paginate(8);
         }
 
 
