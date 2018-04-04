@@ -44,6 +44,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="slug">Slug</label>
+                <input type="hidden" name="original_slug" id="original_slug" value="{{ old('slug' , $entry->slug) }}">
                 <input type="text" class="form-control" id="slug" placeholder="Slug" name="slug" value="{{  old('slug' , $entry->slug) }}">
             </div>
         </div>

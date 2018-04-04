@@ -43,12 +43,19 @@ class kategoriController extends Controller
 
     public function kaydet($id = 0) {
 
+        $data= request()->only('kategori_adi', 'slug' , 'ust_id');
+        if (!request()->filled('slug')) {
+
+            $data['slug']=str_slug(request('kategori_adi'));
+            request()->merge(['slug' => $data['slug']]);
+
+        }
+
         $this->validate(request(),[
-            'kategori_adi' => 'required'
+            'kategori_adi' => 'required',
+            'slug' => (request('original_slug') != request('slug') ? 'unique:kategori,slug' : '')
 
         ]);
-
-        $data= request()->only('kategori_adi', 'slug' , 'ust_id');
 
         if ($id>0) {
 
