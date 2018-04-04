@@ -71,6 +71,16 @@ Route::group(['prefix' => 'yonetim' , 'namespace' => 'Yonetim'], function (){
 
         });
 
+        Route::group(['prefix' => 'kategori'] , function (){
+            Route::match(['get' , 'post'] , '/' , 'kategoriController@index')->name('yonetim.kategori');
+            Route::get('/yeni' , 'kategoriController@form')->name('yonetim.kategori.yeni');
+            Route::get('/duzenle/{id}' , 'kategoriController@form')->name('yonetim.kategori.duzenle');
+            Route::post('/kaydet/{id?}' , 'kategoriController@kaydet')->name('yonetim.kategori.kaydet');
+            Route::get('/sil/{id}' , 'kategoriController@sil')->name('yonetim.kategori.sil');
+
+        });
+
+
     });
 
 });
