@@ -57,7 +57,8 @@ class kullaniciController extends Controller
             $list= Kullanici::where('adsoyad' , 'like' , "%$aranan%")
                 ->orWhere('email' , 'like' , "%$aranan%")
                 ->orderByDesc('created_at')
-                ->paginate(8);
+                ->paginate(8)
+                ->appends('aranan' , $aranan);
 
         } else {
 

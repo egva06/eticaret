@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(kategoriTableSeeder::class); #bu kod kategori seeeder dosyamızın çalışması için.
          $this->call(urunTableSeeder::class);
+         $this->call(KullaniciTableSeeder::class);
     }
 }
