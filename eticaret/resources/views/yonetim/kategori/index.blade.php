@@ -14,6 +14,13 @@
             <div class="form-group">
                 <label for="aranan">Ara</label>
                 <input type="text" class="form-control form-control-sm" name="aranan" id="aranan" placeholder="Kategori Ara..." value="{{ old('aranan') }}">
+                <label for="ust_id">Üst Kategori</label>
+                <select name="ust_id" id="ust_id" class="form-control">
+                    <option value="">Seçiniz</option>
+                    @foreach($anakategoriler as $kategori)
+                        <option value="{{ $kategori->id }}" {{ old('ust_id') == $kategori->id ? 'selected' : '' }}>{{ $kategori->kategori_adi }}</option>
+                    @endforeach
+                </select>
 
             </div>
             <button type="submit" class="btn btn-primary">Ara</button>

@@ -9,22 +9,27 @@ class kategoriController extends Controller
 {
     public function index() {
 
-        if (request()->filled('aranan')) {
+        if (request()->filled('aranan') || request()->filled('ust_id')) {
 
             request()->flash(); // Bu Komut Arama yaptığımızda en son ne aradıysak inputta kalmasını sağlar
             $aranan = request('aranan');
-            $list= Kategori::with('ust_kategori')->where('kategori_adi' , 'like' , "%$aranan%")
+            $ust_id=request('ust_id');
+            $list= Kategori::with('ust_kategori')
+                ->where('kategori_adi' , 'like' , "%$aranan%")
+                ->where('ust_id' , $ust_id)
                 ->orderByDesc('id')
                 ->paginate(8)
-                ->appends('aranan' , $aranan);
+                ->appends(['aranan' => $aranan , 'ust_id' => $ust_id ]);
 
         } else {
 
+            request()->flush();
             $list = Kategori::with('ust_kategori')->orderByDesc('id')->paginate(8);
         }
 
+        $anakategoriler= Kategori::whereRaw('ust_id is null')->get();
 
-        return view('yonetim.kategori.index' , compact('list'));
+        return view('yonetim.kategori.index' , compact('list' , 'anakategoriler'));
 
     }
 
