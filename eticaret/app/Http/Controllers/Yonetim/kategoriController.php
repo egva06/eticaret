@@ -74,11 +74,13 @@ class kategoriController extends Controller
 
     public function sil($id) {
 
-        Kullanici::destroy($id);
+        $kategori = Kategori::find($id);
+        $kategori->urunler()->detach();
+        $kategori->delete();
 
         return redirect()
-            ->route('yonetim.kullanici')
-            ->with('mesaj' , 'Kullanıcı Silindi')
+            ->route('yonetim.kategori')
+            ->with('mesaj' , 'Kayıt Silindi')
             ->with('mesaj_tur' , 'success');
 
     }
