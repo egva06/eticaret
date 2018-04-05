@@ -85,11 +85,14 @@ class urunController extends Controller
     public function sil($id)
     {
 
-        Kullanici::destroy($id);
+        $urun = Urun::find($id);
+        $urun->kategoriler()->detach();
+        $urun->detay()->delete();
+        $urun->delete();
 
         return redirect()
-            ->route('yonetim.kullanici')
-            ->with('mesaj', 'Kullanıcı Silindi')
+            ->route('yonetim.urun')
+            ->with('mesaj', 'Ürün Silindi')
             ->with('mesaj_tur', 'success');
 
     }
