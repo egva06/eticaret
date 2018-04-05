@@ -8,6 +8,8 @@ class UrunDetay extends Model
 {
     protected $table = 'urun_detay';
 
+    public $guarded = [];
+
     public $timestamps = false;
 
     public function urun() {

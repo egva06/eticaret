@@ -46,7 +46,8 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="aciklama">Açıklama</label>
-                    <textarea type="text" class="form-control" id="aciklama" placeholder="Açıklama" name="aciklama">{{ old('aciklama' , $entry->aciklama) }}</textarea>
+                    <textarea type="text" class="form-control" id="aciklama" placeholder="Açıklama"
+                              name="aciklama">{{ old('aciklama' , $entry->aciklama) }}</textarea>
                 </div>
             </div>
         </div>
@@ -59,6 +60,53 @@
                            value="{{ old('fiyati', $entry->fiyati) }}">
                 </div>
             </div>
+        </div>
+
+        <div class="checkbox" style="margin-right: 10px;">
+            <label>
+                {{-- Hidden input kullanma sebebimiz old ile eski girilen değeri alabilmek için checkboxdan--}}
+
+                <input type="hidden" name="goster_slider" value="0">
+                <input type="checkbox" name="goster_slider"
+                       value="1" {{old('aktif_mi' ,$entry->detay->goster_slider) ? 'checked' : '' }}> Slider'da Göster
+            </label>
+
+            <label>
+                {{-- Hidden input kullanma sebebimiz old ile eski girilen değeri alabilmek için checkboxdan--}}
+
+                <input type="hidden" name="goster_gunun_firsati" value="0">
+                <input type="checkbox" name="goster_gunun_firsati"
+                       value="1" {{old('aktif_mi' ,$entry->detay->goster_gunun_firsati) ? 'checked' : '' }}> Günün
+                Fırsatında Göster
+            </label>
+
+            <label>
+                {{-- Hidden input kullanma sebebimiz old ile eski girilen değeri alabilmek için checkboxdan--}}
+
+                <input type="hidden" name="goster_one_cikan" value="0">
+                <input type="checkbox" name="goster_one_cikan"
+                       value="1" {{old('aktif_mi' ,$entry->detay->goster_one_cikan) ? 'checked' : '' }}> Öne Çıkanlarda
+                Göster
+            </label>
+
+            <label>
+                {{-- Hidden input kullanma sebebimiz old ile eski girilen değeri alabilmek için checkboxdan--}}
+
+                <input type="hidden" name="goster_cok_satan" value="0">
+                <input type="checkbox" name="goster_cok_satan"
+                       value="1" {{old('aktif_mi' ,$entry->detay->goster_cok_satan) ? 'checked' : '' }}> Çok Satanlarda
+                Göster
+            </label>
+
+            <label>
+                {{-- Hidden input kullanma sebebimiz old ile eski girilen değeri alabilmek için checkboxdan--}}
+
+                <input type="hidden" name="goster_indirimli" value="0">
+                <input type="checkbox" name="goster_indirimli"
+                       value="1" {{old('aktif_mi' ,$entry->detay->goster_indirimli) ? 'checked' : '' }}> İndirimli
+                Göster
+            </label>
+
         </div>
 
     </form>

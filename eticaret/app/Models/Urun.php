@@ -21,9 +21,9 @@ class Urun extends Model
 
     public function detay() {
 
-        return $this->hasOne('App\Models\UrunDetay');
+        return $this->hasOne('App\Models\UrunDetay')->withDefault();
         #bu kod detay bilgisini çekmek için.
-
+        # withDefault eğer bir detay bilgisi yoksa boş olarak gelmesini sağlıyor.
 
     }
 
