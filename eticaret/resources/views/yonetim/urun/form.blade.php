@@ -123,6 +123,10 @@
             </div>
         </div>
         <div class="form-group">
+            @if($entry->detay->urun_resmi!=null)
+                <img src="/uploads/urunler/{{ $entry->detay->urun_resmi }}" style="height: 100px; margin-right: 20px;"
+                 class="thumbnail pull-left" alt="">
+            @endif
             <label for="urun_resmi">Ürün Resmi</label>
             <input type="file" name="urun_resmi" id="urun_resmi">
         </div>
