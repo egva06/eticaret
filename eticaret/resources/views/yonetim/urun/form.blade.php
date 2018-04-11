@@ -5,7 +5,7 @@
 
 
 
-    <form action="{{ route('yonetim.urun.kaydet' , @$entry->id) }}" method="post">
+    <form action="{{ route('yonetim.urun.kaydet' , @$entry->id) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <div class="pull-right">
@@ -122,6 +122,12 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label for="urun_resmi">Ürün Resmi</label>
+            <input type="file" name="urun_resmi" id="urun_resmi">
+        </div>
+
+
     </form>
 
 @endsection

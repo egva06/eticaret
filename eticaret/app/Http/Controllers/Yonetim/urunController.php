@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Yonetim;
 
 use App\Models\Kategori;
+use App\Models\UrunDetay;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Urun;
@@ -85,6 +86,29 @@ class urunController extends Controller
             $entry->kategoriler()->attach($kategoriler);
 
         }
+
+        if (request()->hasFile('urun_resmi') ) {
+
+            $this->validate(request(),[
+             'urun_resmi' => 'image|mimes:jpg,png,jpeg,gif|max:5000'
+
+            ]);
+            $urun_resmi = request()->file('urun_resmi');
+
+            $dosyaadi = $entry->id . "-" . time() . "." . $urun_resmi->extension();
+
+            if ($urun_resmi->isValid()) {
+
+                $urun_resmi->move('uploads/urunler' , $dosyaadi);
+                UrunDetay::updateOrCreate(
+                    ['urun_id' => $entry->id],
+                    ['urun_resmi' => $dosyaadi]
+                );
+            }
+
+        }
+
+
 
         return redirect()
             ->route('yonetim.urun.duzenle', $entry->id)
