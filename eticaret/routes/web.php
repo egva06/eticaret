@@ -89,6 +89,15 @@ Route::group(['prefix' => 'yonetim' , 'namespace' => 'Yonetim'], function (){
 
         });
 
+        Route::group(['prefix' => 'siparis'] , function (){
+            Route::match(['get' , 'post'] , '/' , 'siparisController@index')->name('yonetim.siparis');
+            Route::get('/yeni' , 'siparisController@form')->name('yonetim.siparis.yeni');
+            Route::get('/duzenle/{id}' , 'siparisController@form')->name('yonetim.siparis.duzenle');
+            Route::post('/kaydet/{id?}' , 'siparisController@kaydet')->name('yonetim.siparis.kaydet');
+            Route::get('/sil/{id}' , 'siparisController@sil')->name('yonetim.siparis.sil');
+
+        });
+
 
     });
 
